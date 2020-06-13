@@ -1,5 +1,5 @@
 .container{
-    height: 100%;
+    height: 120%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,9 +10,13 @@ mat-card{
 a{
     text-decoration:none;
 }
-.mat-card-header{
+mat-card-header{
     display: flex;
     justify-content: center;
+}
+mat-card-content{
+    display: flex;
+    flex-direction: column;
 }
 .social-login{
     display: flex;
@@ -25,6 +29,10 @@ a{
     font-size: 16px;
     padding: 10px;
     display: flex;
+}
+.social-btn:hover{
+    background-color: beige;
+    cursor: pointer;
 }
 .social-btn img {
     height: 32px;
@@ -55,6 +63,15 @@ hr{
 .telephone{
     display: flex;
 }
-mat-icon{
+.input mat-icon{
     margin-right: 10px;
+}
+#hideEye1,#hideEye2{
+    font-size: 20px;
+}
+#signupButton{
+    width: 100%;
+}
+#connexion{
+    align-self: center;
 }

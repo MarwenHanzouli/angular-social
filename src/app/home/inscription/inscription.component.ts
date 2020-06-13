@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import * as countries from '../phone-prefix.json';
+import { MustMatch } from '../../helpers/validators';
 @Component({
   selector: 'app-inscription',
   templateUrl: './inscription.component.html',
@@ -10,7 +11,7 @@ export class InscriptionComponent implements OnInit {
 
   userForm:FormGroup;
   countries:any[]=[];
-  selectedValue:any;
+  hide = true;
   constructor(private formBuilder:FormBuilder) { }
 
   ngOnInit() {
@@ -23,7 +24,10 @@ export class InscriptionComponent implements OnInit {
       email:['',[Validators.required,Validators.email]],
       telephone:['',[Validators.required,Validators.pattern(/[0-9]+/i)]],
       password:['',[Validators.required,Validators.minLength(3)]],
-      repassword:['',[Validators.required,Validators.minLength(3)]]
+      repassword:['',[Validators.required]]
+    },
+    {
+      validator: MustMatch('password','repassword')
     });
   }
   get form (){

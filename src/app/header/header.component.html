@@ -4,18 +4,18 @@
             <mat-icon>dashboard</mat-icon>
             Logo
         </button>
-        <button mat-flat-button color="primary">
+        <button [ngClass]="{clicked: page==='accueil'}" [routerLink]="['/home','accueil']" mat-flat-button color="primary">
                 Accueil
         </button>
-        <button mat-flat-button color="primary">
+        <button [ngClass]="{clicked: page==='contact'}" [routerLink]="['/home','contact']" mat-flat-button color="primary">
                 Contact
         </button>
         <span class="spacer"></span>
-        <button class="right" mat-flat-button color="primary">
+        <button [ngClass]="{clicked: page==='login'}" [routerLink]="['/home','login']"  class="right" mat-flat-button color="primary">
             Se connecter
             <mat-icon>login</mat-icon>
         </button>
-        <button class="right" mat-flat-button color="primary">
+        <button [ngClass]="{clicked: page==='signup'}" [routerLink]="['/home','signup']"  class="right" mat-flat-button color="primary">
             S'inscrire
             <mat-icon svgIcon="register"></mat-icon>
         </button>

@@ -20,7 +20,7 @@
             </div>
             <div class="separtor">
                 <hr>
-                <span>Ou</span>
+                <span>OU</span>
                 <hr>
             </div>
             <form [formGroup]="userForm">
@@ -64,7 +64,10 @@
                 <mat-form-field class="input">
                     <mat-label>Mot de passe</mat-label>
                     <mat-icon matPrefix color="primary">lock</mat-icon>
-                    <input matInput formControlName="password">
+                    <input [type]="hide ? 'password' : 'text'" matInput formControlName="password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" >
+                        <mat-icon color="primary" id="hideEye1">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
                     <mat-error *ngIf="form.password.hasError('minlength') && !form.password.hasError('required')">
                       3 caractères au minimum
                     </mat-error>
@@ -75,15 +78,22 @@
                 <mat-form-field class="input">
                     <mat-label>Confirmer le mot de passe</mat-label>
                     <mat-icon matPrefix color="primary">lock</mat-icon>
-                    <input matInput formControlName="repassword">
-                    <mat-error *ngIf="form.repassword.hasError('minlength') && !form.repassword.hasError('required')">
-                      3 caractères au minimum
+                    <input [type]="hide ? 'password' : 'text'" matInput formControlName="repassword">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" >
+                        <mat-icon color="primary" id="hideEye2">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="form.repassword.hasError('mustMatch') && !form.repassword.hasError('required')">
+                      Entrer le même mot de passe
                     </mat-error>
                     <mat-error *ngIf="form.repassword.hasError('required')">
                       Champ <strong>obligatoire</strong>
                     </mat-error>
                 </mat-form-field>
+                <button id="signupButton" mat-raised-button color="primary">S'inscrire</button>
             </form>
+            <div id="connexion">
+                Vous avez déjà un compte? <button [routerLink]="['/home','login']" mat-button color="primary">Connectez-vous</button>
+            </div>
         </mat-card-content>
     </mat-card>
 </div>

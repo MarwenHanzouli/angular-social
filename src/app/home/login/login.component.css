@@ -1,0 +1,80 @@
+.container{
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+mat-card{
+    width: 50%;
+}
+a{
+    text-decoration:none;
+}
+mat-card-header{
+    display: flex;
+    justify-content: center;
+}
+mat-card-content{
+    display: flex;
+    flex-direction: column;
+}
+.social-login{
+    display: flex;
+    flex-direction: column;
+}
+.social-btn{
+    border: 1px ridge;
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 10px;
+    display: flex;
+}
+.social-btn:hover{
+    background-color: beige;
+    cursor: pointer;
+}
+.social-btn img {
+    height: 32px;
+    float: left;
+}
+
+.social-btn.facebook img {  
+    margin-left: 3px;
+}
+.social-btn.github img {
+    margin-left: 3px;
+}
+.social-btn>span{
+    margin: auto;
+    align-self: center;
+}
+.separtor{
+    display: flex;
+}
+hr{
+    width: 48%;
+    border: 0.25px ridge;
+}
+.input {
+    width: 100%;
+    margin-bottom: 7px;
+}
+
+.input mat-icon{
+    margin-right: 10px;
+}
+
+#signinButton{
+    width: 100%;
+}
+#inscrire{
+    align-self: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+form>a{
+    align-self: flex-end;
+}
