@@ -1,0 +1,60 @@
+.container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+mat-card{
+    width: 50%;
+}
+a{
+    text-decoration:none;
+}
+.mat-card-header{
+    display: flex;
+    justify-content: center;
+}
+.social-login{
+    display: flex;
+    flex-direction: column;
+}
+.social-btn{
+    border: 1px ridge;
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 10px;
+    display: flex;
+}
+.social-btn img {
+    height: 32px;
+    float: left;
+}
+
+.social-btn.facebook img {  
+    margin-left: 3px;
+}
+.social-btn.github img {
+    margin-left: 3px;
+}
+.social-btn>span{
+    margin: auto;
+    align-self: center;
+}
+.separtor{
+    display: flex;
+}
+hr{
+    width: 48%;
+    border: 0.25px ridge;
+}
+.input {
+    width: 100%;
+    margin-bottom: 7px;
+}
+.telephone{
+    display: flex;
+}
+mat-icon{
+    margin-right: 10px;
+}
