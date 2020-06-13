@@ -5,11 +5,14 @@ import { MaterialModule } from '../material/material.module';
 import { LoginComponent } from './login/login.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent, InscriptionComponent],
+  declarations: [LoginComponent, InscriptionComponent, ForgetPasswordComponent, AccueilComponent, ContactComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
