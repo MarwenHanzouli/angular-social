@@ -75,3 +75,8 @@ hr{
 #connexion{
     align-self: center;
 }
+@media screen and (max-width:740px){
+    mat-card{
+        width: 80%;
+    }
+}

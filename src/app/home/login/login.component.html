@@ -27,7 +27,7 @@
                 <mat-form-field class="input">
                     <mat-label>Email</mat-label>
                     <mat-icon matPrefix color="primary">email</mat-icon>
-                    <input matInput formControlName="email" placeholder="Ex. pat@example.com">
+                    <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
                     <mat-error *ngIf="form.email.hasError('email') && !form.email.hasError('required')">
                       Entrer une adresse e-mail valide
                     </mat-error>
@@ -38,7 +38,7 @@
                 <mat-form-field class="input">
                     <mat-label>Mot de passe</mat-label>
                     <mat-icon matPrefix color="primary">lock</mat-icon>
-                    <input [type]="hide ? 'password' : 'text'" matInput formControlName="password">
+                    <input type="password" matInput formControlName="password">
                     <mat-error *ngIf="form.password.hasError('minlength') && !form.password.hasError('required')">
                       3 caractères au minimum
                     </mat-error>
