@@ -1,0 +1,19 @@
+.responsive{
+    display: flex;
+    justify-content: space-between;
+}
+mat-toolbar{
+    position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+button:hover{
+    background-color: cornflowerblue ;
+}
+.clicked{
+    background-color: dodgerblue;
+}
+mat-sidenav{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,2 +1,33 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<app-header *ngIf="!isResponsive"></app-header>
+<mat-toolbar color="primary" *ngIf="isResponsive">
+    <mat-toolbar-row class="responsive" >
+        <button mat-flat-button color="primary">
+            <mat-icon>dashboard</mat-icon>
+            Logo
+        </button>
+        <button mat-icon-button (click)="snav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav #snav>
+        <button [ngClass]="{clicked: page==='accueil'}" [routerLink]="['/home','accueil']" mat-flat-button color="primary">
+            Accueil
+        </button>
+        <button [ngClass]="{clicked: page==='contact'}" [routerLink]="['/home','contact']" mat-flat-button color="primary">
+                Contact
+        </button>
+        <button [ngClass]="{clicked: page==='login' || page==='forget-password'}" [routerLink]="['/home','login']" mat-flat-button color="primary">
+            Se connecter
+            <mat-icon>login</mat-icon>
+        </button>
+        <button [ngClass]="{clicked: page==='signup'}" [routerLink]="['/home','signup']" mat-flat-button color="primary">
+            S'inscrire
+            <mat-icon svgIcon="register"></mat-icon>
+        </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
