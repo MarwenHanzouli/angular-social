@@ -24,7 +24,7 @@ const homeRoutes: Routes = [
     },
     {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'accueil',
         pathMatch: 'full'
     },
 ];
