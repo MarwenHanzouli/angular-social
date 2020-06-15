@@ -11,7 +11,7 @@
                 Contact
         </button>
         <span class="spacer"></span>
-        <button [ngClass]="{clicked: page==='login'}" [routerLink]="['/home','login']"  class="right" mat-flat-button color="primary">
+        <button [ngClass]="{clicked: page==='login' || page==='forget-password'}" [routerLink]="['/home','login']"  class="right" mat-flat-button color="primary">
             Se connecter
             <mat-icon>login</mat-icon>
         </button>

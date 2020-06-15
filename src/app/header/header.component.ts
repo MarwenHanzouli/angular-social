@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 @Component({
@@ -11,10 +11,13 @@ export class HeaderComponent implements OnInit {
   page:string;
   constructor(private router:Router) { }
 
-  ngOnInit() {
+  ngOnInit() { 
     this.router.events.pipe(filter(e=> e instanceof NavigationEnd)).subscribe((data)=>{
-      this.page=data['url'].split('/home/')[1];
+      this.page=data['urlAfterRedirects'].split('/home/')[1];
     });
   }
-
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.page=this.router.url.split('/home/')[1];
+  }
 }

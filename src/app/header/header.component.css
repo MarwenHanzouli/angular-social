@@ -13,7 +13,13 @@ button:hover{
 .clicked{
   background-color: dodgerblue;
 }
-@media screen and (max-width:700px){
+/* @media screen and (max-width:740px){
+  mat-toolbar{
+    position: fixed;
+    z-index: 2;
+  }
+} */
+/* @media screen and (max-width:700px){
     mat-toolbar{
         height: 100%;
     }
@@ -21,4 +27,4 @@ button:hover{
         display: flex;
         flex-direction: column;
     }
-}
+} */
