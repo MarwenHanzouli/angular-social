@@ -10,6 +10,10 @@ export class LanguesService {
     [{langue:'Français',selected:true},{langue:'English',selected:false},{langue:'العربية',selected:false}]
   );
   constructor() { }
+
+  changeLanguage(langues:Langue[]){
+    this.subject.next(langues);
+  }
 }
 export interface Langue{
   langue:string;
