@@ -8,11 +8,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ContactComponent } from './contact/contact.component';
+import { RedirectComponent } from './redirect/redirect.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent, InscriptionComponent, ForgetPasswordComponent, AccueilComponent, ContactComponent],
+  declarations: [LoginComponent, InscriptionComponent, ForgetPasswordComponent, AccueilComponent, ContactComponent, RedirectComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

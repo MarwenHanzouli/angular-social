@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import * as countries from '../phone-prefix.json';
 import { MustMatch } from '../../helpers/validators';
+import { AuthenticationService } from 'src/app/services/authentication.service.js';
 @Component({
   selector: 'app-inscription',
   templateUrl: './inscription.component.html',
@@ -12,7 +13,8 @@ export class InscriptionComponent implements OnInit {
   userForm:FormGroup;
   countries:any[]=[];
   hide = true;
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:FormBuilder,
+              private authService:AuthenticationService) { }
 
   ngOnInit() {
     this.countries=countries.countries;
@@ -34,7 +36,16 @@ export class InscriptionComponent implements OnInit {
     return this.userForm.controls;
   }
 
-  clicker(){
-
+  signup(provider:string){
+    switch (provider) {
+      case 'google':
+        return this.authService.connectWithGoogle(); 
+      case 'facebook':
+        return this.authService.connectWithFacebook(); 
+      case 'github':
+        return this.authService.connectWithGithub();    
+      default:
+        break;
+    }
   }
 }

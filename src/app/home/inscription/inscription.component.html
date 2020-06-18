@@ -5,15 +5,15 @@
         </mat-card-header>
         <mat-card-content>
             <div class="social-login">
-                <a class="social-btn google" (click)="clicker()">
+                <a class="social-btn google" [href]="signup('google')">
                     <img src="../../../assets/icons/google-logo.png" alt="Google" /> 
                     <span>Inscrivez-vous avec Google</span>
                 </a>
-                <a class="social-btn facebook">
+                <a class="social-btn facebook" [href]="signup('facebook')">
                     <img src="../../../assets/icons/fb-logo.png" alt="Facebook" /> 
                     <span>Inscrivez-vous avec Facebook</span>
                 </a>
-                <a class="social-btn github">
+                <a class="social-btn github" [href]="signup('github')">
                     <img src="../../../assets/icons/github-logo.png" alt="Github" /> 
                     <span>Inscrivez-vous avec Github</span>
                 </a>

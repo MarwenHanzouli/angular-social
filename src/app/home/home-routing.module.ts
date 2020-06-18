@@ -5,6 +5,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ContactComponent } from './contact/contact.component';
+import { RedirectComponent } from './redirect/redirect.component';
 
 const homeRoutes: Routes = [
     {
@@ -27,6 +28,10 @@ const homeRoutes: Routes = [
         redirectTo: 'accueil',
         pathMatch: 'full'
     },
+    {
+        path:'oauth2/redirect',
+        component:RedirectComponent
+    }
 ];
   
 @NgModule({
