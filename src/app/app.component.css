@@ -22,8 +22,6 @@ button:hover{
     background-color: dodgerblue;
 }
 .sidenav{
-    display: flex;
-    flex-direction: column;
     width: 60%;
     background-color: #3F51B5;
 }
@@ -32,4 +30,13 @@ button:hover{
 }
 .is-mobile .sidenav-container {
     flex: 1 0 auto;
+}
+
+.buttons{
+    width: 100%;
+}
+@media screen and (max-width:820px) and (min-width:600px){
+    .sidenav{
+        margin-top: 8px;
+    }
 }

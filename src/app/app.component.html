@@ -6,30 +6,59 @@
                 <mat-icon>dashboard</mat-icon>
                 Logo
             </button>
-            <button mat-icon-button (click)="snav.toggle()">
+            <button *ngIf="!snav.opened" mat-icon-button (click)="snav.toggle()">
                 <mat-icon>menu</mat-icon>
+            </button>
+            <button *ngIf="snav.opened" mat-icon-button (click)="snav.toggle()">
+                <mat-icon>close</mat-icon>
             </button>
         </mat-toolbar-row>
     </mat-toolbar>
-    <mat-sidenav-container  class="sidenav-container" [style.marginTop.px]="isResponsive ? 56 : 0">
-        <mat-sidenav #snav class="sidenav">
-            <button [ngClass]="{clicked: page==='accueil'}" [routerLink]="['/home','accueil']" mat-flat-button color="primary">
+    <mat-sidenav-container  class="sidenav-container" 
+    [style.marginTop.px]="mobileQuery.matches || isResponsive ? 56 : 0">
+        <mat-sidenav #snav class="sidenav" 
+        [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" >
+            <button class="buttons" (click)="snav.toggle()" [ngClass]="{clicked: page==='accueil'}" [routerLink]="['/home','accueil']" mat-flat-button color="primary">
                 Accueil
             </button>
             <br>
-            <button [ngClass]="{clicked: page==='contact'}" [routerLink]="['/home','contact']" mat-flat-button color="primary">
-                    Contact
+            <button class="buttons" [matMenuTriggerFor]="afterMenu" [ngClass]="{clicked: page==='services'}"  mat-flat-button color="primary">
+                Formations
+                <mat-icon>
+                    arrow_drop_down
+                </mat-icon>
+            </button>
+            <mat-menu #afterMenu="matMenu" yPosition="below">
+                <button mat-menu-item>Licence</button>
+                <button mat-menu-item>Cycle Ingénieur</button>
+            </mat-menu>
+            <br>
+            <button class="buttons" (click)="snav.toggle()" [ngClass]="{clicked: page==='contact'}" [routerLink]="['/home','contact']" mat-flat-button color="primary">
+                Contact
             </button>
             <br>
-            <button [ngClass]="{clicked: page==='login' || page==='forget-password'}" [routerLink]="['/home','login']" mat-flat-button color="primary">
+            <button class="buttons" (click)="snav.toggle()" [ngClass]="{clicked: page==='login' || page==='forget-password'}" [routerLink]="['/home','login']" mat-flat-button color="primary">
                 Se connecter
                 <mat-icon>login</mat-icon>
             </button>
             <br>
-            <button [ngClass]="{clicked: page==='signup'}" [routerLink]="['/home','signup']" mat-flat-button color="primary">
+            <button class="buttons" (click)="snav.toggle()"  mat-flat-button color="primary"
+            [ngClass]="{clicked: page==='signup'}" [routerLink]="['/home','signup']">
                 S'inscrire
                 <mat-icon svgIcon="register"></mat-icon>
             </button>
+            <br>
+            <button class="buttons" [matMenuTriggerFor]="language" mat-flat-button color="primary">
+                <mat-icon>
+                    language
+                </mat-icon>
+                FR
+            </button>
+            <mat-menu #language="matMenu" yPosition="below" >
+                <button mat-menu-item *ngFor="let item of languages" 
+                [ngClass]="{clicked: item.selected}" (click)="changeLangue(item.langue)">{{item.langue}}
+                </button>
+            </mat-menu>
         </mat-sidenav>
         <mat-sidenav-content>
             <router-outlet></router-outlet>
