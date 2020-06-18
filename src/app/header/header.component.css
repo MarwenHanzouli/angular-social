@@ -28,3 +28,6 @@ button:hover{
         flex-direction: column;
     }
 } */
+mat-menu{
+  overflow: hidden;
+}
