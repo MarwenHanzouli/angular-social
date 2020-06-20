@@ -11,7 +11,7 @@ export class NavigationService {
   public subject:BehaviorSubject<string>=new BehaviorSubject(window.location.pathname.split('/home/')[1])
   constructor(private router:Router) {
     this.router.events.pipe(filter(e=> e instanceof NavigationEnd)).subscribe((data)=>{
-      this.subject.next(data['urlAfterRedirects'].split('/home/')[1])
+      this.subject.next(data['urlAfterRedirects'].split('/')[2])
     }); 
   }
 }
