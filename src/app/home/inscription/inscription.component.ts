@@ -3,6 +3,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import * as countries from '../phone-prefix.json';
 import { MustMatch } from '../../helpers/validators';
 import { AuthenticationService } from 'src/app/services/authentication.service.js';
+import { User } from 'src/app/models/user.js';
 @Component({
   selector: 'app-inscription',
   templateUrl: './inscription.component.html',
@@ -13,6 +14,8 @@ export class InscriptionComponent implements OnInit {
   userForm:FormGroup;
   countries:any[]=[];
   hide = true;
+  submitted:boolean=false;
+  loading:boolean;
   constructor(private formBuilder:FormBuilder,
               private authService:AuthenticationService) { }
 
@@ -47,5 +50,21 @@ export class InscriptionComponent implements OnInit {
       default:
         break;
     }
+  }
+  submit(){
+    if(this.userForm.invalid){
+      return;
+    }
+    this.loading=true;
+    let user:User=new User(this.userForm.value['nomPrenom'],this.userForm.value['email'],
+    this.userForm.value['password'],this.userForm.value['telephone']);
+    this.authService.registerUser(user).subscribe((data)=>{
+      console.log(data);
+      this.loading=false;
+    },
+    (err)=>{
+      console.log(err);
+      this.loading=false;
+    })
   }
 }

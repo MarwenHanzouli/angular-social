@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,8 @@ export class LoginComponent implements OnInit {
 
   userForm:FormGroup;
 
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:FormBuilder,
+              private authService:AuthenticationService) { }
 
   ngOnInit() {
     this.initForm();
@@ -25,7 +27,16 @@ export class LoginComponent implements OnInit {
   get form (){
     return this.userForm.controls;
   }
-  clicker(){
-    
+  login(provider:string){
+    switch (provider) {
+      case 'google':
+        return this.authService.connectWithGoogle(); 
+      case 'facebook':
+        return this.authService.connectWithFacebook(); 
+      case 'github':
+        return this.authService.connectWithGithub();    
+      default:
+        break;
+    }
   }
 }

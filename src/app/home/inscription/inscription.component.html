@@ -23,7 +23,7 @@
                 <span>OU</span>
                 <hr>
             </div>
-            <form [formGroup]="userForm">
+            <form [formGroup]="userForm" (ngSubmit)="submit()">
                 <mat-form-field class="input">
                     <mat-label>Nom & Prénom</mat-label>
                     <mat-icon matPrefix color="primary">person</mat-icon>
@@ -89,7 +89,9 @@
                       Champ <strong>obligatoire</strong>
                     </mat-error>
                 </mat-form-field>
-                <button id="signupButton" mat-raised-button color="primary">S'inscrire</button>
+                <button id="signupButton" mat-raised-button color="primary">S'inscrire
+                    <mat-spinner color="accent" *ngIf="loading"></mat-spinner>
+                </button>
             </form>
             <div id="connexion">
                 Vous avez déjà un compte? <button [routerLink]="['/home','login']" mat-button color="primary">Connectez-vous</button>
