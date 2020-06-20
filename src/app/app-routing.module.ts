@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  { 
+    path: 'not-found', 
+    component: FourOhFourComponent 
+  },
+  { 
+    path: '**', 
+    redirectTo: 'not-found' 
+  }
 ];
 
 @NgModule({

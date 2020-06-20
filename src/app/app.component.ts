@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewChild, ChangeDetectorRef, OnDestroy, ElementRef } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ChangeDetectorRef, OnDestroy, ElementRef, AfterViewInit } from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material/icon';
 import { Router, NavigationEnd } from '@angular/router';
@@ -11,16 +11,16 @@ import { LanguesService, Langue } from './services/langues.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit,OnDestroy{
-
+export class AppComponent implements OnInit,OnDestroy,AfterViewInit{
+  
   mobileQuery: MediaQueryList;
   @ViewChild('snav',{static:false}) snav:MatSidenav;
   title = 'angular-social';
   isResponsive:boolean;
   page:string;
   public languages:Langue[];
-
   private _mobileQueryListener: ()=>void;
+
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
             private router:Router,private el:ElementRef,
             changeDetectorRef: ChangeDetectorRef,media: MediaMatcher,
@@ -33,9 +33,16 @@ export class AppComponent implements OnInit,OnDestroy{
         sanitizer.bypassSecurityTrustResourceUrl('assets/icons/register.svg'));
   }
   ngOnInit(): void {
-    
+    let aux;
     this.router.events.pipe(filter(e=> e instanceof NavigationEnd)).subscribe((data)=>{
-      this.page=data['urlAfterRedirects'].split('/home/')[1];
+      this.page=data['urlAfterRedirects'].split('/')[2];
+      if(this.page!=='oauth2' && this.page){
+        if(aux){
+          this.el.nativeElement.querySelector("#"+aux).removeAttribute("cdkFocusInitial");
+        }
+        this.el.nativeElement.querySelector("#"+this.page).setAttribute("cdkFocusInitial",null);
+        aux=this.page;
+      }      
     });
     this.languesService.subject.subscribe((data)=>{
       this.languages=data;
@@ -48,6 +55,10 @@ export class AppComponent implements OnInit,OnDestroy{
       this.isResponsive=false;
     }
   }
+  ngAfterViewInit(): void {
+    
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     if(window.innerWidth<=820){

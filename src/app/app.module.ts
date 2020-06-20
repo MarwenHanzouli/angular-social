@@ -8,13 +8,13 @@ import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TestUnitComponent } from './test-unit/test-unit.component';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TestUnitComponent
+    FourOhFourComponent
   ],
   imports: [
     BrowserModule,
